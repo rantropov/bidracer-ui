@@ -1,0 +1,7 @@
+---
+# This playbook bootstraps the RTBKit Development Server
+- hosts: all
+  remote_user: root
+  roles:
+    - role: debian-bootstrap
+    - role: elaoinfra-ohmyzsh

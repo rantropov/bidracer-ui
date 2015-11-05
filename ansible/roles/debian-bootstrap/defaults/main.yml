@@ -1,0 +1,5 @@
+---
+username: user1
+# created with:
+# python -c 'import crypt; print crypt.crypt("This is my Password", "$1$SomeSalt$")'
+password: $92CIhLCOS37s

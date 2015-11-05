@@ -1,0 +1,40 @@
+---
+- name: Update apt source epository
+  apt: update_cache=yes
+
+- name: Upgrade system packages
+  apt: upgrade=safe
+
+- name: Install FTP server
+  apt: name=vsftpd state=present
+
+- name: Copy the vsftpd configuration file
+  copy: src=vsftpd.conf
+        dest=/etc/
+        owner=root
+        group=root
+        mode="u=rwx,g=rwx,o=rx"
+  notify: restart vsftpd
+
+- name: Install Vim
+  apt: name=vim state=present
+
+- name: Install tmux
+  apt: name=tmux state=present
+
+- name: Add a new user rtbkit
+  user: name="{{ username }}"
+        password="{{password}}"
+        group=sudo
+        shell=/bin/bash
+
+- name: Setup SSH for user rtbkit
+  authorized_key: user="{{ username }}"
+                  key="{{ lookup('file', 'rtbkit_rsa.pub') }}"
+
+- name: Copy updated sudoers file at /etc/sudoers
+  copy: src=sudoers
+        dest=/etc/
+        owner=root
+        group=root
+        mode="u=r,g=r"
