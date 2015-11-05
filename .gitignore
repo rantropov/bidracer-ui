@@ -1,4 +1,4 @@
 .*
 .env
-.ssh-keys/*
+.ssh/*
 !/.gitignore
