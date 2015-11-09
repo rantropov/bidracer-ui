@@ -1,0 +1,23 @@
+- name: clone bidracer-ui git repo
+  git: repo=https://github.com/swarup-donepudi/bid-racer-ui.git
+       dest=/home/bidracer/bidracer-ui
+       accept_hostkey=yes
+       force=yes
+       update=yes
+  sudo: yes
+  when: deploy-app
+
+- name: Change the file permissions for the repo folder
+  file: path=/home/bidracer/bidracer-ui
+        state=directory
+        owner=bidracer
+        mode=0777
+        group=sudo
+        recurse=yes
+
+- name: Create a symlink /home/bidracer/bidracer-ui to /var/www/bidracer
+  file: >
+    src=/home/bidracer/bidracer-ui
+    dest=/var/www/bidracer
+    state=link
+  sudo: yes
