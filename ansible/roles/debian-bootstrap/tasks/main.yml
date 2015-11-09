@@ -22,9 +22,12 @@
 - name: Install tmux
   apt: name=tmux state=present
 
+- name: Install Git
+  apt: name=git-core state=present
+
 - name: Add a new user rtbkit
   user: name="{{ username }}"
-        password="{{password}}"
+        password="{{ password }}"
         group=sudo
         shell=/bin/bash
 

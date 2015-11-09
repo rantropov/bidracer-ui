@@ -1,7 +1,26 @@
 ---
-# This playbook bootstraps the RTBKit Development Server
+# This playbook bootstraps the bidracer-ui server
 - hosts: all
   remote_user: root
   roles:
     - role: debian-bootstrap
-    - role: elaoinfra-ohmyzsh
+      when: orchestrate
+    - role: swarup-apache
+      when: orchestrate
+    - role: geerlingguy-mysql
+      when: orchestrate
+    - role: geerlingguy-nodejs
+      when: orchestrate
+  tasks:
+    - include_vars: ./vars/main.yml
+    - name: install bower
+      shell: npm install -g bower
+      when: orchestrate
+    - name: clone bidracer-ui git repo
+      git: repo=https://github.com/swarup-donepudi/bid-racer-ui.git
+           dest=/var/www/bidracer/
+           accept_hostkey=yes
+           force=yes
+           update=yes
+      sudo: yes
+      when: deploy

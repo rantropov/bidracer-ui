@@ -1,0 +1,14 @@
+---
+apache_daemon: httpd
+apache_server_root: /etc/httpd
+apache_sites_available_path: /etc/httpd/sites-available
+apache_sites_enabled_path: /etc/httpd/sites-enabled
+apache_default_vhost: /etc/httpd/conf.d/welcome.conf
+apache_packages:
+  - httpd
+  - httpd-devel
+  - mod_ssl
+  - openssh
+  - libselinux-python
+
+# ex: ft=ansible et ts=2 sw=2:

@@ -1,0 +1,27 @@
+---
+- name: Ensure Apache is installed (Debian).
+  apt: >
+    name={{ item }}
+    state=installed
+  with_items: apache_packages
+
+- name: Configure Apache Vhost ports (Debian).
+  replace: >
+    dest="{{ apache_server_root }}/ports.conf"
+    regexp="(\nNameVirtualHost [^\n]+)+"
+    replace="{% for item in apache_listen_ports %}\nNameVirtualHost *:{{ item }}{% endfor %}"
+
+- name: Configure Apache listening ports (Debian).
+  replace: >
+    dest="{{ apache_server_root }}/ports.conf"
+    regexp="(\nListen [^\n]+)+"
+    replace="{% for item in apache_listen_ports %}\nListen {{ item }}{% endfor %}"
+  notify: restart apache
+
+- name: Enable Apache mods (Debian).
+  file: >
+    src={{ apache_server_root }}/mods-available/{{ item }}
+    dest={{ apache_server_root }}/mods-enabled/{{ item }}
+    state=link
+  with_items: apache_mods_enabled
+  notify: restart apache
