@@ -304,7 +304,7 @@ a:hover {
 #user-nav > ul > li > a {
   padding: 11.5px 10px;
   display: block;
-  font-size: 10px;
+  font-size: 12px;
 }
 #user-nav > ul > li > a,
 #user-nav > ul > li > a > i {
@@ -2090,10 +2090,12 @@ ul#icons li {
   padding: 0 10px;
 }
 .quick-actions li {
-  min-width: 120px;
+  font-size: 20px;
+  line-height: 98px;
+  min-width: 320px;
 }
 .quick-actions li a {
-  padding: 10px 30px;
+  padding: 70px 30px;
 }
 .quick-actions li a i[class^="icon-"],
 .quick-actions li a i[class*=" icon-"] {
@@ -2411,11 +2413,11 @@ form .form-group:last-child {
   /*
 	.controls {
 		padding: 10px 10px 10px 0;
-		
+
 		label {
 			margin-top: 6px;
 			margin-right: 10px;
-			
+
 			div[class^="iradio_flat-"], div[class^="icheckbox_flat-"] {
 				vertical-align: middle;
 				margin-top: -3px;

@@ -1,6 +1,0 @@
----
-
-- include: requirements.yml
-- include: install.yml
-- include: themes.yml
-- include: users.yml
