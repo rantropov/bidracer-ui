@@ -4,7 +4,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider :rackspace do |rs|
     rs.username = ENV['RACKSPACE_USERNAME']
     rs.api_key  = ENV['RACKSPACE_API_KEY']
-    rs.admin_password = ENV['ANSIBLE_CONTROLLER_ROOT_PASSWORD']
+    rs.admin_password = ENV['VM_ROOT_PASSWORD']
     rs.flavor   = /1 GB Performance/
     rs.image    = /Ubuntu 12.04/
     rs.rackspace_region = :dfw

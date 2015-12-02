@@ -1,5 +1,5 @@
 - name: clone bidracer-ui git repo
-  git: repo=https://github.com/swarup-donepudi/bid-racer-ui.git
+  git: repo=https://github.com/bidracer/bid-racer-ui.git
        dest=/home/bidracer/bidracer-ui
        accept_hostkey=yes
        force=yes
