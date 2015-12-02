@@ -1,3 +1,11 @@
 ---
 orchestrate: true
-deploy-app: true
+deploy_app: true
+notification_email_id: "swaroop921@gmail.com"
+#SendGrid account settings
+sendgrid_username: bidracer
+sendgrid_password: Samsungs4
+sendgrid_from_addr: bidracer@smtp.sendgrid.net
+sendgrid_to_addr: "{{ notification_email_id }}"
+sendgrid_default_subject: bidracer-adserver machine orchestration update
+sendgrid_default_body: bidracer-adserver machine is ready for use

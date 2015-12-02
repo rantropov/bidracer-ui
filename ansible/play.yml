@@ -14,9 +14,18 @@
     - role: geerlingguy-nodejs
       when: orchestrate
     - role: bidracer-ui-git
-      when: deploy-app
+      when: deploy_app
   tasks:
     - include_vars: ./vars/main.yml
     - name: install bower
       shell: npm install -g bower
       when: orchestrate
+    # - name: Send notification email
+    #   sendgrid:
+    #     username: "{{ sendgrid_username }}"
+    #     password: "{{ sendgrid_password }}"
+    #     from_address: "{{ sendgrid_from_addr }}"
+    #     to_addresses: "{{ sendgrid_to_addr }}"
+    #     subject: {{ sendgrid_default_subject }}
+    #     body: "{{ sendgrid_default_body }}"
+    #   delegate_to: localhost
